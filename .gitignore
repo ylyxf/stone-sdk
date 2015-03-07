@@ -7,6 +7,12 @@
 *.jar
 *.war
 *.ear
-
+*.log
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+target/
+.settings/
+src/main/webapp/WEB-INF/logs/
+src/main/webapp/WEB-INF/templates/project/folder/src/main/webapp/include/jquery-easyui-1.4.1/
+src/main/webapp/WEB-INF/templates/project/folder/src/main/webapp/include/bootstrap-3.1.1/
+

@@ -1,0 +1,1 @@
+<jsp:forward page="/project/ProjectList.do"></jsp:forward>

@@ -1,0 +1,15 @@
+/*
+* 
+*/
+.form-layout{
+	
+}
+
+
+.form-layout td{
+	padding-top: 15px;
+}
+
+.form-layout td:nth-child(odd){
+	padding-left: 20px;
+}
