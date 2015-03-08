@@ -27,7 +27,7 @@ INSERT INTO ${table.name} (
 	SELECT * FROM ${table.name}   	 
 	WHERE
 	<#list table.primaryColumns as column>
-	${column.name} = ${'#'}{id[${column_index}]} <#if column_has_next>,</#if>
+	${column.name} = ${'#'}{id[${column_index}]} <#if column_has_next> AND </#if>
 	</#list>	
 </select>
 	  
@@ -55,7 +55,7 @@ INSERT INTO ${table.name} (
 	</#list>
 	WHERE 
 	<#list table.primaryColumns as column>
-	${column.name} = ${'#'}{id[${column_index}]} <#if column_has_next>,</#if>
+	${column.name} = ${'#'}{id[${column_index}]} <#if column_has_next> AND </#if>
 	</#list>				
 </update>
 	
@@ -64,7 +64,7 @@ INSERT INTO ${table.name} (
 	SET ${'$'}{fields._updateSql}
 	WHERE 
 	<#list table.primaryColumns as column>
-	${column.name} = ${'#'}{id[${column_index}]} <#if column_has_next>,</#if>
+	${column.name} = ${'#'}{id[${column_index}]} <#if column_has_next> AND </#if>
 	</#list>			
 </update>
 	  
@@ -80,7 +80,7 @@ INSERT INTO ${table.name} (
 	DELETE FROM  ${table.name}   
 	WHERE 
 	<#list table.primaryColumns as column>
-	${column.name} = ${'#'}{id[${column_index}]} <#if column_has_next>,</#if>
+	${column.name} = ${'#'}{id[${column_index}]} <#if column_has_next> AND </#if>
 	</#list>
 </delete>
 	
