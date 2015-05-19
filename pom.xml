@@ -4,7 +4,7 @@
 
 	<groupId>org.siqisource</groupId>
 	<artifactId>stone-sdk</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.4a</version>
 	<packaging>war</packaging>
 
 
