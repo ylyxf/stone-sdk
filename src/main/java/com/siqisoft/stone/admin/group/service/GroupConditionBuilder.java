@@ -12,7 +12,7 @@ public class GroupConditionBuilder {
 
 		SimpleCondition condition = new SimpleCondition();
 		Integer id = groupQueryForm.getId();
-		id = id == null ? 0 : id;
+		id = id == null ? -1 : id;
 		condition.andEqual("parentId", id);
 		condition.andNotEqual(SqlKey.LOGIC_DELETED, true);
 		condition.orderAsc("sortNo");
