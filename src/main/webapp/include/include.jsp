@@ -1,41 +1,38 @@
-<%@page contentType="text/html;charset=UTF-8" isELIgnored="false"%>
+<%@page contentType="text/html;charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page contentType="text/html;charset=UTF-8"%>
 <%
 	request.setAttribute("appPath", request.getContextPath());
 %>
+<title>教育管理系统-eduadmin</title>
 <script type="text/javascript">
 	var appPath = "${appPath}";
 </script>
-<!-- 新 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="${appPath}/include/bootstrap-3.3.2/css/bootstrap.min.css">
+<!-- esayui的css -->
+<link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-1.4.1/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-1.4.1/themes/icon.css">
+<!-- 基于esayui定制的css -->
+<link rel="stylesheet" href="${appPath}/include/font-awesome-4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-config/easyui-config.css">
+<link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-config/themes/icon.css">
+<!--  esayui的js -->
+<script type="text/javascript"  src="${appPath}/include/jquery-easyui-1.4.1/jquery.min.js"></script>
+<script type="text/javascript"  src="${appPath}/include/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="${appPath}/include/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
+<!-- 基于esayui定制的js,一些基本约定 -->
+<script type="text/javascript" src="${appPath}/include/jquery-easyui-config/easyui-config.js"></script>
+<!-- 基于esayui的扩展 -->
+<script type="text/javascript" src="${appPath}/include/jquery-easyui-config/easyui-extension.js"></script>
 
-<!-- 可选的Bootstrap主题文件（一般不用引入） -->
-<link rel="stylesheet" href="${appPath}/include/bootstrap-3.3.2/css/bootstrap-theme.min.css">
+<script type="text/javascript" src="${appPath}/include/jquery.stone.js"></script>
 
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="${appPath}/include/jquery-1.11.1.min.js"></script>
-
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="${appPath}/include/bootstrap-3.3.2/js/bootstrap.min.js"></script>
-
-<!-- 表单 http://malsup.com/jquery/form/ -->
-<script src="${appPath}/include/jquery.form.min.js"></script>
-
-
-<!-- 提醒 http://sciactive.com/pnotify -->
-<link rel="stylesheet" href="${appPath}/include/pnotify/pnotify.custom.min.css">
-<script src="${appPath}/include/pnotify/pnotify.custom.min.js"></script>
-
-
-<!-- 自定义的一些工具类  -->
-<script src="${appPath}/include/jquery.stone.js"></script>
-
-<c:if test="${!empty notify }">
-<script>
-$(document).ready(function() {
-	new PNotify(${notify});
-});
-</script>
-</c:if>
+<script type="text/javascript">
+(function($){
+    $.fn.oldReady = $.fn.ready;
+    $.fn.ready = function(fn){
+        return $.fn.oldReady( function(){ try{ if(fn) fn.apply($,arguments); } catch(e){}} );
+    }
+})(jQuery);
+</script> 

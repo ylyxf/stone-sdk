@@ -5,4 +5,18 @@
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
+	<mappers>
+		<mapper resource="mappers/ConfigClassMapper.xml"/>
+		<mapper resource="mappers/ConfigMapper.xml"/>
+		<mapper resource="mappers/GroupMapper.xml"/>
+		<mapper resource="mappers/GroupUserMapper.xml"/>
+		<mapper resource="mappers/UserMapper.xml"/>
+		<mapper resource="mappers/DictMapper.xml"/>
+		<mapper resource="mappers/DictItemMapper.xml"/>
+		<mapper resource="mappers/RoleMapper.xml"/>
+		<mapper resource="mappers/RoleOperationMapper.xml"/>
+		<mapper resource="mappers/RoleUserMapper.xml"/>
+		<mapper resource="org/siqisource/stone/user/mapper/GroupUserMapper.xml"/>
+		<mapper resource="org/siqisource/stone/role/mapper/RoleUserMapper.xml"/>
+	</mappers>
 </configuration>

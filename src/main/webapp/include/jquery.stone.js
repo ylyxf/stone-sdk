@@ -38,17 +38,5 @@
     	
     	
     });  
-    
-    $.stone={
-    	notify:function(data){
-			new PNotify({
-	            title:data.title,
-	            text: data.message,
-	            type: data.type,
-	            delay:1500,
-	        });
-		} 
-			
-    }
      
  })(jQuery);  

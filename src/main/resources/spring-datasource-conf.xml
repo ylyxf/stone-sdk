@@ -18,6 +18,11 @@ http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd"
 		<property name="jdbcUrl" value="${innerDataSource.url}" />
 		<property name="properties">
 			<props>
+				<prop key="c3p0.minPoolSize">${innerDataSource.minPoolSize}</prop>
+				<prop key="hc3p0.maxPoolSize">${innerDataSource.maxPoolSize}</prop>
+				<prop key="hc3p0.timeout">${innerDataSource.timeout}</prop>
+				<prop key="c3p0.max_statement">${innerDataSource.max_statement}</prop>
+				<prop key="c3p0.testConnectionOnCheckout">${innerDataSource.testConnectionOnCheckout}</prop>
 				<prop key="user">${innerDataSource.username}</prop>
 				<prop key="password">${innerDataSource.password}</prop>
 			</props>
