@@ -4,7 +4,7 @@
 
 	<groupId>org.siqisource</groupId>
 	<artifactId>stone-sdk</artifactId>
-	<version>1.0.4a</version>
+	<version>1.0.5</version>
 	<packaging>war</packaging>
 
 
@@ -41,7 +41,7 @@
 		<targetVersion>1.6</targetVersion>
 
 		<!-- Build Dependency Version Properties -->
-		<stone.version>1.0.4</stone.version>
+		<stone.version>1.0.5</stone.version>
 		<javaee-web-api.version>6.0</javaee-web-api.version>
 		<jstl.version>1.1.2</jstl.version>
 		<standard.version>1.1.2</standard.version>
@@ -129,8 +129,9 @@
 				<version>${tomcat7-maven-plugin.version}</version>
 				<configuration>
 					<port>2234</port>
-					<path>/stone</path>
+					<path>/stone-sdk</path>
 					<uriEncoding>UTF-8</uriEncoding>
+					<contextFile>${basedir}/tomcat-context.xml</contextFile>
 				</configuration>
 			</plugin>
 		</plugins>
