@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+	<Resource name="jdbc/stone" global="jdbc/stone" auth="Container"
+		type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+		url="jdbc:postgresql://127.0.0.1:5432/stone-sdk" username="postgres"
+		password="postgres" maxActive="100" maxIdle="20" minIdle="5" maxWait="10000" />
+</Context>

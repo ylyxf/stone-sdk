@@ -11,7 +11,7 @@
 <div class="container">
 	<div class="row" style="padding-top: 30px">
 		<div class="col-md-12" >
-	  		 <h1>安装成功，请重启服务器。</h1>
+	  		 <h3>安装成功，请重启服务器。</h3>
 	  	</div>
 	</div>  
 </div>

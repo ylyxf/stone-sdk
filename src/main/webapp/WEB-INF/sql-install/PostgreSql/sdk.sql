@@ -1,5 +1,5 @@
 INSERT INTO st_user ("id", "account", "password", "name", "phone", "email", "enabled", "logic_deleted")
-VALUES (0,  'admin', 'admin',  '管理员', NULL, NULL, true, false);
+VALUES (0,  'admin', '',  '管理员', NULL, NULL, false, false);
 
 INSERT INTO st_group ("id", "parent_id", "code", "name", "is_leaf", "sort_no", "type", "logic_deleted")
 VALUES (0, -1, 'root', '组织结构', true, 1, '', false);

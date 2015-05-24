@@ -6,60 +6,21 @@
 <title>stone</title>
 
 <%@ include file="/include/includeBootstrap.jsp"%>
-<script type="text/javascript"  src="${appPath}/install/InstallMain.js"></script>
 </head>
 <body>
 <div class="container">
 	<div class="row" style="padding-top: 30px">
 		<div class="col-md-12" >
-	  		<form id="dbInfoForm" name="dbInfoForm" class="form-horizontal" method="post"
-	  			action="${appPath}/install/initDatabase.do">
-			  <div class="form-group">
-			    <label for="dataSource" class="col-sm-2 control-label">数据源类型</label>
-			    <div class="col-sm-10">
-			    <input type="text" class="form-control" id="dataSource" name="dataSource" value="innerDataSource" readonly  required>
-			  	</div>
-			  </div>
-	  		  <div class="form-group">
-			    <label for="dbType" class="col-sm-2 control-label">数据库</label>
-			    <div class="col-sm-10">
-			    <input type="text" class="form-control" id="dbType" name="dbType" value="POSTGRESQL" readonly  required>
-			  	</div>
-			  </div>
-			  <div class="form-group">
-			    <label for="dbDriver" class="col-sm-2 control-label">驱动</label>
-			    <div class="col-sm-10">
-			    <input type="text" class="form-control" id="dbDriver" name="dbDriver" value="org.postgresql.Driver"
-			    	placeholder="jdbc:postgresql://127.0.0.1:5432/stone" readonly  required>
-			  	</div>
-			  </div>
-			  <div class="form-group">
-			    <label for="dbUrl" class="col-sm-2 control-label">URL</label>
-			    <div class="col-sm-10">
-			    <input type="text" class="form-control" id="dbUrl" name="dbUrl" value="${databaseConnection.dbUrl }"  required>
-			  	</div>
-			  </div>
-			  <div class="form-group">
-			    <label for="dbUser" class="col-sm-2 control-label">用户名</label>
-			    <div class="col-sm-10">
-			    <input type="text" class="form-control" id="dbUser" name="dbUser" value="${databaseConnection.dbUser }" required>
-			  	</div>
-			  </div>
-			  <div class="form-group">
-			    <label for="dbPassword" class="col-sm-2 control-label">密码</label>
-			    <div class="col-sm-10">
-			    <input type="text" class="form-control" id="dbPassword" name="dbPassword"  value="${databaseConnection.dbPassword }" required>
-			  	</div>
-			  </div>
-			  <div class="col-sm-2"></div>
-			  <div class="col-sm-10">
-			  	${errmsg }
-			  </div>
-			  <div class="col-sm-2"></div>
-			  <div class="col-sm-10">
-			  	<button id="installBtn" type="submit" class="btn btn-default">开始安装</button>
-			  </div>
-			</form>
+	  		 <h3>欢迎使用stone，系统检测到您还没有设置数据库，请选择连接数据库的方式：</h3>
+	  		 <br/> 
+	  		 <a href="${appPath}/install/dataSourceInfo.do?dataSource=innerDataSource" type="button" class="btn btn-default btn-lg" >内置数据源</a>
+  			 <a href="${appPath}/install/dataSourceInfo.do?dataSource=containerDataSource" type="button" class="btn btn-primary btn-lg">容器数据源</a>
+	  		 <br/><br/><br/>
+	  		 <h4>容器数据源与内置数据源的区别：</h4>
+	  		 <p>容器数据源：数据库连接由容器来管理，提供jndi name供stone使用。在我们能够控制容器的时候，可以使用这种方式来进行安装。
+	  		 </p>
+	  		 <p>内置数据源：数据库连接由stone内置的spring来管理，当我们没有权限操作容器创建数据源的时候，我们采取这种办法来进行安装。
+	  		 </p>
 	  	</div>
 	</div>  
 </div>
