@@ -11,16 +11,16 @@
 	var appPath = "${appPath}";
 </script>
 <!-- esayui的css -->
-<link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-1.4.1/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-1.4.1/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-1.4.2/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-1.4.2/themes/icon.css">
 <!-- 基于esayui定制的css -->
 <link rel="stylesheet" href="${appPath}/include/font-awesome-4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-config/easyui-config.css">
 <link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-config/themes/icon.css">
 <!--  esayui的js -->
-<script type="text/javascript"  src="${appPath}/include/jquery-easyui-1.4.1/jquery.min.js"></script>
-<script type="text/javascript"  src="${appPath}/include/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="${appPath}/include/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript"  src="${appPath}/include/jquery-easyui-1.4.2/jquery.min.js"></script>
+<script type="text/javascript"  src="${appPath}/include/jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="${appPath}/include/jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
 <!-- 基于esayui定制的js,一些基本约定 -->
 <script type="text/javascript" src="${appPath}/include/jquery-easyui-config/easyui-config.js"></script>
 <!-- 基于esayui的扩展 -->

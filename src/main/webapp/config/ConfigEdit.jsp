@@ -11,7 +11,7 @@
 					<input type="hidden" name="configList[${status.index }].code" value="${config.code}">
 					<input type="hidden" name="configList[${status.index }].classCode" value="${config.classCode}">
 					<input type="hidden" name="configList[${status.index }].encode" value="${config.encode}">
-					<input type="text" name="configList[${status.index }].value" class="easyui-textbox" value="${config.value}">
+					<input type="text" name="configList[${status.index }].value" class="easyui-textbox"  style="width:600px" value="${config.value}">
 				</td>
 				<td>${config.comment}</td>
 			</tr> 

@@ -16,7 +16,7 @@
 		ignore-resource-not-found="true" location="classpath:config.properties"
 		ignore-unresolvable="true" />
 
-	<context:component-scan base-package="org.siqisource.stone,com.siqisoft.stone.admin,com.siqisoft.stone.install,com.siqisoft.stone.sdk">
+	<context:component-scan base-package="org.siqisource.stone,com.siqisoft.stone.admin,com.siqisoft.stone.install,com.siqisoft.stone.project">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>

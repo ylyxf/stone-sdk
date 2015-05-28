@@ -2,17 +2,17 @@ package com.siqisoft.stone.admin.config.controller;
 
 import java.util.ArrayList;
 
-import org.siqisource.stone.config.model.Config;
+import org.siqisource.stone.config.model.ConfigEntity;
 
-public class ConfigQueryForm extends Config {
+public class ConfigQueryForm extends ConfigEntity {
 	
-	ArrayList<Config> configList;
+	ArrayList<ConfigEntity> configList;
 
-	public ArrayList<Config> getConfigList() {
+	public ArrayList<ConfigEntity> getConfigList() {
 		return configList;
 	}
 
-	public void setConfigList(ArrayList<Config> configList) {
+	public void setConfigList(ArrayList<ConfigEntity> configList) {
 		this.configList = configList;
 	}
 	

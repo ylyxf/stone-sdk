@@ -1,7 +1,7 @@
 package com.siqisoft.stone.admin.role.service;
 
-import org.siqisource.stone.permission.model.Permission;
-import org.siqisource.stone.permission.model.PermissionClass;
+import org.siqisource.stone.permission.annotation.Permission;
+import org.siqisource.stone.permission.annotation.PermissionClass;
 import org.siqisource.stone.web.constants.JspConstants;
 import org.springframework.stereotype.Component;
 
