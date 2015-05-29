@@ -9,6 +9,9 @@ public class ArchetypeService {
 	ConfigService configService;
 
 	public void initProject() {
+		//config
+		
+		
 	}
 
 }

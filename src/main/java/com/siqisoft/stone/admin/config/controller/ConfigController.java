@@ -18,6 +18,14 @@ public class ConfigController {
 	@Autowired
 	ConfigService service;
 
+	@RequestMapping("/config/configClass/List.do")
+	public String list(Model model) {
+		List<ConfigClassEntity> configClassList = service
+				.listConfigClassEntity();
+		model.addAttribute("configClassList", configClassList);
+		return "config/ConfigClassList";
+	}
+
 	@RequestMapping("/config/ConfigRead.do")
 	public String read(String classCode, Model model) {
 		ConfigClassEntity configClassEntity = this.service
@@ -46,10 +54,9 @@ public class ConfigController {
 
 	@RequestMapping("/config/ConfigEdit.do")
 	@ResponseBody
-	public AjaxResponse edit(ConfigQueryForm configQueryForm, Model model) {
-		ConfigClassEntity configClassEntity = new ConfigClassEntity();
-		configClassEntity.setCode(configQueryForm.getClassCode());
-		configClassEntity.setConfigEntityList(configQueryForm.getConfigList());
+	public AjaxResponse edit(String classCode, ConfigQueryForm configQueryForm,
+			Model model) {
+		service.updateConfigByEntity(classCode, configQueryForm.getConfigList());
 		return new AjaxResponse("保存成功", configQueryForm.getClassCode());
 	}
 

@@ -2,7 +2,6 @@
 /* Drop Tables */
 
 DROP TABLE IF EXISTS public.st_config;
-DROP TABLE IF EXISTS public.st_config_class;
 DROP TABLE IF EXISTS public.st_enum_value;
 DROP TABLE IF EXISTS public.st_data_filter_item;
 DROP TABLE IF EXISTS public.st_data_filter;
@@ -24,32 +23,16 @@ CREATE TABLE public.st_config
 (
 	-- 类的属性名
 	code varchar(120) NOT NULL,
-	-- 值
-	value varchar(100),
-	-- label
-	label varchar(20),
-	-- 说明
-	comment varchar(500),
-	-- 排序
-	sort_no int,
+	
 	-- 类名
-	class_code varchar(200) NOT NULL,
+	class_code varchar(256) NOT NULL,
+	
+	-- 值
+	value varchar(256)
+	
 	CONSTRAINT st_config_pkey PRIMARY KEY (code, class_code)
 ) WITHOUT OIDS;
 
-
-CREATE TABLE public.st_config_class
-(
-	-- 类名
-	code varchar(200) NOT NULL,
-	-- 标签
-	label varchar(20),
-	-- 说明
-	comment varchar(500),
-	-- 序号
-	sort_no int,
-	CONSTRAINT st_config_class_pkey PRIMARY KEY (code)
-) WITHOUT OIDS;
 
 
 CREATE TABLE public.st_data_filter
@@ -224,14 +207,6 @@ CREATE TABLE public.st_user
 
 
 
-/* Create Foreign Keys */
-
-ALTER TABLE public.st_config
-	ADD CONSTRAINT st_config_fk FOREIGN KEY (class_code)
-	REFERENCES public.st_config_class (code)
-	ON UPDATE NO ACTION
-	ON DELETE NO ACTION
-;
 
 
 ALTER TABLE public.st_data_filter_item
@@ -302,15 +277,8 @@ ALTER TABLE public.st_role_user
 /* Comments */
 
 COMMENT ON COLUMN public.st_config.code IS '类的属性名';
-COMMENT ON COLUMN public.st_config.value IS '值';
-COMMENT ON COLUMN public.st_config.label IS 'label';
-COMMENT ON COLUMN public.st_config.comment IS '说明';
-COMMENT ON COLUMN public.st_config.sort_no IS '排序';
 COMMENT ON COLUMN public.st_config.class_code IS '类名';
-COMMENT ON COLUMN public.st_config_class.code IS '类名';
-COMMENT ON COLUMN public.st_config_class.label IS '标签';
-COMMENT ON COLUMN public.st_config_class.comment IS '说明';
-COMMENT ON COLUMN public.st_config_class.sort_no IS '序号';
+COMMENT ON COLUMN public.st_config.value IS '值';
 COMMENT ON COLUMN public.st_data_filter.id IS '数据过滤器';
 COMMENT ON COLUMN public.st_data_filter.name IS '名称';
 COMMENT ON COLUMN public.st_data_filter.remark IS '备注';

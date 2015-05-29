@@ -11,10 +11,13 @@ public class Project {
 	@Config(label="项目名称")
 	private String name;
 
+	@Config(label="项目路径")
 	private String path;
 
+	@Config(label="基本包名")
 	private String basicPackage;
-
+	
+	@Config(label="代码模板")
 	private String codeTemplate;
 
 	public String getName() {

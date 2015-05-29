@@ -41,7 +41,7 @@
 		<targetVersion>1.6</targetVersion>
 
 		<!-- Build Dependency Version Properties -->
-		<stone.version>1.0.5</stone.version>
+		<stone.version>1.0.5-SNAPSHOT</stone.version>
 		<javaee-web-api.version>6.0</javaee-web-api.version>
 		<jstl.version>1.1.2</jstl.version>
 		<standard.version>1.1.2</standard.version>
