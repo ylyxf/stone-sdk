@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.siqisoft.stone.develop.model.Project;
 import com.siqisoft.stone.develop.service.ArchetypeService;
+import com.siqisoft.stone.develop.service.DatabaseService;
 
 @Controller
 public class DevelopController {
@@ -16,10 +17,14 @@ public class DevelopController {
 	Project project;
 
 	@Autowired
-	ArchetypeService service;
+	ArchetypeService archetypeService;
+	
+	@Autowired
+	DatabaseService databaseService;
 
 	@RequestMapping("/develop/Index.do")
 	public String index() {
+		databaseService.listTable();
 		return "develop/Index";
 	}
 
@@ -27,7 +32,7 @@ public class DevelopController {
 	@ResponseBody
 	public AjaxResponse initProject() {
 		// config
-		service.initProject();
+		archetypeService.initProject();
 		return new AjaxResponse("操作成功");
 	}
 

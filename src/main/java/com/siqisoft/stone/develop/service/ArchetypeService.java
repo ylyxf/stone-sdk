@@ -21,13 +21,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.siqisoft.stone.develop.model.ArchetypeFile;
-import com.siqisoft.stone.develop.model.Project;
 
 @Service
 public class ArchetypeService {
-
-	@Autowired
-	private Project project;
 	
 	@Autowired
 	private Path path;
