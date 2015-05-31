@@ -3,11 +3,8 @@ package com.siqisoft.stone.develop.service;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +15,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.siqisource.stone.exceptions.BusinessException;
+import org.siqisource.stone.utils.ContextTemplate;
 import org.siqisource.stone.web.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,14 +23,17 @@ import org.springframework.stereotype.Service;
 import com.siqisoft.stone.develop.model.ArchetypeFile;
 import com.siqisoft.stone.develop.model.Project;
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-
 @Service
 public class ArchetypeService {
 
 	@Autowired
 	private Project project;
+	
+	@Autowired
+	private Path path;
+	
+	@Autowired
+	private ContextTemplate template;
 
 	private List<ArchetypeFile> archetypeFileList = new ArrayList<ArchetypeFile>();
 
@@ -145,14 +146,7 @@ public class ArchetypeService {
 
 		if (file.isAsTemplate()) {
 			String content = FileUtils.readFileToString(distFile);
-			Template template = new Template(distFile.getName(),
-					new StringReader(content), new Configuration(
-							Configuration.getVersion()));
-			Map<String, Object> root = new HashMap<String, Object>();
-			root.put("project", project);
-			StringWriter writer = new StringWriter();
-			template.process(root, writer);
-			FileUtils.writeStringToFile(distFile, writer.toString());
+			FileUtils.writeStringToFile(distFile, template.parse(distFile.getName(),content));
 		}
 
 		Map<String, String> replaces = file.getReplace();
@@ -166,19 +160,10 @@ public class ArchetypeService {
 
 	private String readArcheTypeAsString() {
 		try {
-			File archetypeFile = new File(Path.getPhysicalPath()
+			File archetypeFile = new File(path.getPhysicalPath()
 					+ "/WEB-INF/templates/archetype/archetype.xml");
 			String content = FileUtils.readFileToString(archetypeFile);
-			Template template = new Template(archetypeFile.getName(),
-					new StringReader(content), new Configuration(
-							Configuration.getVersion()));
-			Map<String, Object> root = new HashMap<String, Object>();
-			root.put("project", project);
-			root.put("sdkAppPath", Path.getPhysicalPath());
-
-			StringWriter writer = new StringWriter();
-			template.process(root, writer);
-			return writer.toString();
+			return template.parse(archetypeFile.getName(),content);
 		} catch (Exception e) {
 			throw new BusinessException("使用freemaker解析archetype模板时出错", e);
 		}

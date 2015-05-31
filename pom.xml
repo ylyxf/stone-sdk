@@ -41,12 +41,11 @@
 		<targetVersion>1.6</targetVersion>
 
 		<!-- Build Dependency Version Properties -->
-		<stone.version>1.0.5-SNAPSHOT</stone.version>
+		<stone.version>1.0.5</stone.version>
 		<javaee-web-api.version>6.0</javaee-web-api.version>
 		<jstl.version>1.1.2</jstl.version>
 		<standard.version>1.1.2</standard.version>
 		<postgresql.version>9.1-901.jdbc4</postgresql.version>
-		<freemarker.version>2.3.21</freemarker.version>
 		<commons-configuration.version>1.10</commons-configuration.version>
 
 		<!-- Plugin Dependency Version Properties -->
@@ -90,13 +89,6 @@
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>${postgresql.version}</version>
-		</dependency>
-
-		<!-- freemarker -->
-		<dependency>
-			<groupId>org.freemarker</groupId>
-			<artifactId>freemarker</artifactId>
-			<version>${freemarker.version}</version>
 		</dependency>
 
 		<!-- commons-configuration -->

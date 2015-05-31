@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @JspService
 @ConfigClass(label="项目信息")
-public class Project {
+public class Project { 
 
 	@Config(label="项目名称")
 	private String name;

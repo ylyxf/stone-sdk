@@ -23,6 +23,7 @@ import org.siqisource.stone.utils.JsonUtil;
 import org.siqisource.stone.utils.OrderedProperties;
 import org.siqisource.stone.web.Path;
 import org.siqisource.stone.web.jspservice.JspService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,9 @@ import com.siqisoft.stone.install.modle.DatabaseConnection;
 @Service
 @JspService
 public class InstallService {
+
+	@Autowired
+	private Path path;
 
 	@Value("${install.installed}")
 	private String installed;
@@ -48,7 +52,7 @@ public class InstallService {
 	}
 
 	public boolean initDatabase(DatabaseConnection databaseConnection) {
-		String basePath = Path.getPhysicalPath() + "/WEB-INF/sql-install/"
+		String basePath = path.getPhysicalPath() + "/WEB-INF/sql-install/"
 				+ databaseConnection.getDbType();
 		Properties props = new OrderedProperties();
 		try {
