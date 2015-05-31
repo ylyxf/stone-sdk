@@ -1,18 +1,27 @@
 package com.siqisoft.stone.develop.service;
 
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+import org.apache.commons.lang.StringUtils;
 import org.siqisource.stone.exceptions.BusinessException;
+import org.siqisource.stone.ui.bt.Paging;
 import org.siqisource.stone.utils.NameConverter;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
 import com.siqisoft.stone.develop.model.Column;
 import com.siqisoft.stone.develop.model.Table;
@@ -23,7 +32,7 @@ public class DatabaseService {
 	@Resource(name = "${dataSource.name}")
 	DataSource dataSource;
 
-	public List<Table> listTable() {
+	public Map<String,Object> listTable(Paging paging) {
 		List<Table> tableList = new ArrayList<Table>();
 		try {
 			Connection conn = dataSource.getConnection();
@@ -40,7 +49,10 @@ public class DatabaseService {
 		} catch (SQLException e) {
 			throw new BusinessException("读取表清单时出错：" + e.getMessage());
 		}
-		return tableList;
+		Map<String,Object> result = new HashMap<String,Object>();
+		result.put("total", tableList.size());
+		result.put("rows", paging(tableList, paging));
+		return result;
 	}
 
 	public Table read(String tableName) {
@@ -158,4 +170,42 @@ public class DatabaseService {
 		table.setTreeCode(tableParam.isTreeCode());
 	}
 
+	private List<Table> paging(List<Table> tableList, final Paging paging) {
+		Collections.sort(tableList, new Comparator<Table>() {
+
+			@Override
+			public int compare(Table o1, Table o2) {
+				String sort = paging.getSort();
+				if(StringUtils.isBlank(sort)){
+					return 0;
+				}
+				String order = paging.getOrder();
+				Field field = ReflectionUtils.findField(o1.getClass(), sort);
+				field.setAccessible(true);
+				String value1 = String.valueOf(ReflectionUtils.getField(field,
+						o1));
+				String value2 = String.valueOf(ReflectionUtils.getField(field,
+						o2));
+				String[] values = { value1, value2 };
+				Arrays.sort(values);
+				if ("desc".equals(order)) {
+					return value1.equals(values[0]) ? 1 : -1;
+				} else {
+					return value1.equals(values[0]) ? -1 : 1;
+				}
+			}
+
+		});
+		int offset = paging.getOffset();
+		int limit = paging.getLimit();
+		if (tableList.size() - offset < limit) {
+			limit = tableList.size() - offset;
+		}
+
+		List<Table> result = new ArrayList<Table>();
+		for (int i = 0; i < limit; i++) {
+			result.add(tableList.get(offset+i));
+		}
+		return result;
+	}
 }

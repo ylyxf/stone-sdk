@@ -1,6 +1,9 @@
 package com.siqisoft.stone.develop.controller;
 
+import java.util.Map;
+
 import org.siqisource.stone.ui.AjaxResponse;
+import org.siqisource.stone.ui.bt.Paging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,14 +21,19 @@ public class DevelopController {
 
 	@Autowired
 	ArchetypeService archetypeService;
-	
+
 	@Autowired
 	DatabaseService databaseService;
 
 	@RequestMapping("/develop/Index.do")
 	public String index() {
-		databaseService.listTable();
 		return "develop/Index";
+	}
+
+	@RequestMapping("/develop/tableListData.do")
+	@ResponseBody
+	public Map<String,Object>  tableListData(Paging paging) {
+		return databaseService.listTable(paging);
 	}
 
 	@RequestMapping("/develop/initProject.do")

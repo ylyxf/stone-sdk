@@ -22,9 +22,13 @@
 <script src="${appPath}/include/jquery.validate-1.13.1/localization/messages_zh.min.js"></script>
 <!-- bootbox -->
 <script src="${appPath}/include/bootbox.min-4.4.0.js"></script>
-
+<!-- pnotify -->
 <script src="${appPath}/include/pnotify-2.0.1/pnotify.custom.min.js"></script>
 <link href="${appPath}/include/pnotify-2.0.1/pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
+<!-- Bootstrap Table -->
+
+<script src="${appPath}/include/bootstrap-table-1.8/bootstrap-table-all.min.js"></script>
+<link rel="stylesheet" href="${appPath}/include/bootstrap-table-1.8/bootstrap-table.min.css">
 
 <script src="${appPath}/include/jquery.stone.js"></script>
 <script src="${appPath}/include/bootstrap-config/bootstrap-extension.js"></script>

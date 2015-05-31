@@ -7,16 +7,17 @@
 <%@ include file="/include/includeBootstrap.jsp"%>
 <script type="text/javascript" src="${appPath}/develop/Index.js"></script>
 </head>
-<body>
- <div class="container">
-<div class="row" style="padding-top: 30px">
-	<div class="col-md-12" >
-		 <h1>${project.name}</h1>
-		 <h3>位置:${project.path}</h3>
-		 <h3>基本包名:${project.basicPackagePath}</h3>
-		 <button id="initProject" class="btn btn-default" type="button">初始化项目</button>
-	</div>
-</div>
-</div>
+<body style="overflow: scroll;">
+
+		 <table data-toggle="table" data-url="${appPath}/develop/tableListData.do"
+		  	data-sort-name="name" data-sort-order="asc"
+		 	data-pagination="true" data-side-pagination="server" data-page-list="[5, 10, 20, 50, 100, 200]">
+		    <thead>
+		        <tr>
+		            <th data-field="name"  data-sortable="true">表名</th>
+		            <th data-field="comment">注释</th>
+		        </tr>
+		    </thead>
+		</table>
 </body>
 </html>
