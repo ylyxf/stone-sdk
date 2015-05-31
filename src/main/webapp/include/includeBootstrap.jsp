@@ -6,6 +6,9 @@
 <%
 	request.setAttribute("appPath", request.getContextPath());
 %>
+<script type="text/javascript">
+	var appPath = "${appPath}";
+</script>
 <link rel="stylesheet" href="${appPath}/include/bootstrap-3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" href="${appPath}/include/font-awesome-4.3.0/css/font-awesome.min.css">
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->

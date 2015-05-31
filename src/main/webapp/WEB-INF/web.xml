@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:web="http://xmlns.jcp.org/xml/ns/javaee">
-	<display-name>stone-admin</display-name>
+	<display-name>stone-sdk</display-name>
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
@@ -8,7 +8,7 @@
 	 
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>stone-admin.root</param-value>
+		<param-value>stone-sdk.root</param-value>
 	</context-param>
 	<context-param>
 		<param-name>log4jConfigLocation</param-name>

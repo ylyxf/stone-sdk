@@ -1,0 +1,105 @@
+<archetype>
+	<file src="application-context.xml"
+		dist="${project.path}/src/main/resources/application-context.xml" asResource="true">
+		<replace from="com.siqisoft.stone" to="${project.basicPackage}" />
+	</file>
+	
+	<file src="config.properties"
+		dist="${project.path}/src/main/resources/config.properties" asResource="true">
+	</file>
+	
+	<file src="log4j-conf.xml"
+		dist="${project.path}/src/main/resources/log4j-conf.xml" asResource="true">
+		<replace from="stone-sdk" to="${project.name}" />
+	</file>
+	
+	<file src="mybatis-conf.xml"
+		dist="${project.path}/src/main/resources/mybatis-conf.xml" asResource="true">
+	</file>
+	
+	<file src="spring-datasource-conf.xml"
+		dist="${project.path}/src/main/resources/spring-datasource-conf.xml" asResource="true">
+	</file>
+	
+	<file src="spring-mybatis-conf.xml"
+		dist="${project.path}/src/main/resources/spring-mybatis-conf.xml" asResource="true">
+		<replace from="com.siqisoft.stone" to="${project.basicPackage}" />
+	</file>
+	
+	<file src="spring-security-conf.xml"
+		dist="${project.path}/src/main/resources/spring-security-conf.xml" asResource="true">
+	</file>
+	
+	<file src="spring-task-conf.xml"
+		dist="${project.path}/src/main/resources/spring-task-conf.xml" asResource="true">
+	</file>
+	
+	<file src="web-application-context.xml"
+		dist="${project.path}/src/main/resources/web-application-context.xml" asResource="true">
+		<replace from="com.siqisoft.stone" to="${project.basicPackage}" />
+	</file>
+	
+	
+	<file src="${sdkAppPath}/WEB-INF/web.xml"
+		dist="${project.path}/src/main/webapp/WEB-INF/web.xml">
+		<replace from="stone-sdk" to="${project.name}" />
+	</file>
+	
+	<folder src="${sdkAppPath}/error"
+		dist="${project.path}/src/main/webapp/error">
+	</folder>
+	
+	<folder src="${sdkAppPath}/include/bootstrap-3.3.4"
+		dist="${project.path}/src/main/webapp/include/bootstrap-3.3.4">
+	</folder>
+	
+	<folder src="${sdkAppPath}/include/bootstrap-table-1.8"
+		dist="${project.path}/src/main/webapp/include/bootstrap-table-1.8">
+	</folder>
+	
+	<folder src="${sdkAppPath}/include/bootstrap-config"
+		dist="${project.path}/src/main/webapp/include/bootstrap-config">
+	</folder>
+	
+	<folder src="${sdkAppPath}/include/font-awesome-4.3.0"
+		dist="${project.path}/src/main/webapp/include/font-awesome-4.3.0">
+	</folder>
+	
+	<folder src="${sdkAppPath}/include/jquery.validate-1.13.1"
+		dist="${project.path}/src/main/webapp/include/jquery.validate-1.13.1">
+	</folder>
+	
+	<folder src="${sdkAppPath}/include/pnotify-2.0.1"
+		dist="${project.path}/src/main/webapp/include/pnotify-2.0.1">
+	</folder>
+	
+	<folder src="${sdkAppPath}/error"
+		dist="${project.path}/src/main/webapp/error">
+	</folder>
+	
+	<file src="${sdkAppPath}/include/bootbox.min-4.4.0.js"
+		dist="${project.path}/src/main/webapp/include/bootbox.min-4.4.0.js">
+	</file>
+	
+	<file src="${sdkAppPath}/include/includeBootstrap.jsp"
+		dist="${project.path}/src/main/webapp/include/includeBootstrap.jsp">
+	</file>
+	<file src="${sdkAppPath}/include/includeSegment.jsp"
+		dist="${project.path}/src/main/webapp/include/includeSegment.jsp">
+	</file>
+	<file src="${sdkAppPath}/include/jquery-1.11.1.min.js"
+		dist="${project.path}/src/main/webapp/include/jquery-1.11.1.min.js">
+	</file>
+	<file src="${sdkAppPath}/include/jquery.form.min-3.51.0.js"
+		dist="${project.path}/src/main/webapp/include/jquery.form.min-3.51.0.js">
+	</file>
+	<file src="${sdkAppPath}/include/jquery.stone.js"
+		dist="${project.path}/src/main/webapp/include/jquery.stone.js">
+	</file>
+	
+	<file src="${sdkAppPath}/WEB-INF/templates/archetype/IndexController.java.ftl"
+		dist="${project.path}/src/main/java/${project.basicPackagePath}/index/controller/IndexController.java" asTemplate="true">
+	</file>
+	
+	
+</archetype> 

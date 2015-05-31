@@ -3,7 +3,7 @@
 <log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
 	<appender name="AllLogFile" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="${stone-admin.root}/WEB-INF/logs/all.log" />
+		<param name="File" value="${stone-sdk.root}/WEB-INF/logs/all.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern"
@@ -21,7 +21,7 @@
 
 	<!-- only for sql -->
 	<appender name="SqlLogFile" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="${stone-admin.root}/WEB-INF/logs/sql.log" />
+		<param name="File" value="${stone-sdk.root}/WEB-INF/logs/sql.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern"

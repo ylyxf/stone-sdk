@@ -11,7 +11,7 @@
 
 	<mvc:annotation-driven/>
 	
-	<context:component-scan base-package="com.siqisoft.stone.admin,com.siqisoft.stone.install,com.siqisoft.stone.sdk"
+	<context:component-scan base-package="com.siqisoft.stone"
 		use-default-filters="false">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />

@@ -43,6 +43,12 @@
 		  		<a href="#" class="iconNav" link="${appPath}/role/RoleList.do">角色管理</a>
 		  		</div>
 			</div>
+			<div class="col-md-3">
+		  		<i class="fa fa-group fa-5x"></i>
+		  		<div>
+		  		<a href="#" class="iconNav" link="${appPath}/develop/Index.do">开发选项</a>
+		  		</div>
+			</div>
 		</div>
 	</div>
 </body>
