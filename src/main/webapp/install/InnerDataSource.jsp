@@ -18,7 +18,12 @@
 	  		  <div class="form-group">
 			    <label for="dbType" class="col-sm-2 control-label">数据库</label>
 			    <div class="col-sm-10">
-			    <input type="text" class="form-control" id="dbType" name="dbType" value="PostgreSql" readonly  required>
+			    <div class="col-sm-10">
+			    <select class="form-control" id="dbType" name="dbType">
+					  <option value="PostgreSql">PostgreSql</option>
+					  <option value="Oracle">Oracle</option>
+				</select>
+			  	</div>
 			  	</div>
 			  </div>
 			  <div class="form-group">
