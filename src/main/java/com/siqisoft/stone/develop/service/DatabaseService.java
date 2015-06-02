@@ -29,10 +29,11 @@ import com.siqisoft.stone.develop.utils.JdbcUtils;
 
 @Service
 public class DatabaseService {
+
 	@Resource(name = "${dataSource.name}")
 	DataSource dataSource;
 
-	public Map<String,Object> listTable(Paging paging) {
+	public Map<String, Object> listTable(Paging paging) {
 		List<Table> tableList = new ArrayList<Table>();
 		try {
 			Connection conn = dataSource.getConnection();
@@ -49,7 +50,7 @@ public class DatabaseService {
 		} catch (SQLException e) {
 			throw new BusinessException("读取表清单时出错：" + e.getMessage());
 		}
-		Map<String,Object> result = new HashMap<String,Object>();
+		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("total", tableList.size());
 		result.put("rows", paging(tableList, paging));
 		return result;
@@ -176,7 +177,7 @@ public class DatabaseService {
 			@Override
 			public int compare(Table o1, Table o2) {
 				String sort = paging.getSort();
-				if(StringUtils.isBlank(sort)){
+				if (StringUtils.isBlank(sort)) {
 					return 0;
 				}
 				String order = paging.getOrder();
@@ -204,7 +205,7 @@ public class DatabaseService {
 
 		List<Table> result = new ArrayList<Table>();
 		for (int i = 0; i < limit; i++) {
-			result.add(tableList.get(offset+i));
+			result.add(tableList.get(offset + i));
 		}
 		return result;
 	}
