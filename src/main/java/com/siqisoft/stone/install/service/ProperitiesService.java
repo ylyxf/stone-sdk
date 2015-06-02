@@ -45,9 +45,22 @@ public class ProperitiesService {
 			config.setProperty("innerDataSource.password",
 					databaseConnection.getDbPassword());
 
+			String databaseTypep = databaseConnection.getDbType();
+			
+			//Oracle没有boolean类型
+			if ("Oracle".equals(databaseTypep)) {
+				String authenticationQuery = String.valueOf(config
+						.getProperty("security.authenticationQuery"));
+				authenticationQuery = authenticationQuery.replaceAll("true",
+						"'1'");
+				authenticationQuery = authenticationQuery.replaceAll("false",
+						"'0'");
+				config.setProperty("security.authenticationQuery",
+						authenticationQuery);
+			}
+
 			File outputFile = new File(configFileURL.toURI());
 			layout.save(new FileWriter(outputFile));
-			System.out.println("以保存配置文件至："+outputFile.getAbsolutePath());
 		} catch (Exception e) {
 			throw new BusinessException("设置配置文件时出错!请清空数据库后再次初始化:"
 					+ JsonUtil.clearString(e.getMessage()));

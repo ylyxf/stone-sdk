@@ -39,7 +39,7 @@ http://www.springframework.org/schema/util/spring-util-3.1.xsd"
 		<property name="dataSource" ref="${dataSource.name}" />
 		<property name="permissionsLookupEnabled" value="true" />
 		<property name="authenticationQuery"
-			value="select password from st_user where account = ? and enabled = true " />
+			value="${security.authenticationQuery}" />
 		<property name="userRolesQuery"
 			value="select role_id from st_role_user r ,st_user u   where r.user_id = u.id and u.account = ? " />
 		<property name="permissionsQuery"

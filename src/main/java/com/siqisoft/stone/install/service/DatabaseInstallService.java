@@ -68,9 +68,7 @@ public class DatabaseInstallService {
 			Connection conn = getConnection(databaseConnection);
 			rdp.setIgnoreFailedDrops(true);
 			rdp.setSqlScriptEncoding("UTF-8");
-			if ("Oracle".equals(databaseType)) {
-				rdp.setSeparator("/");
-			}
+			rdp.setSeparator("^_^");
 			rdp.populate(conn); // this starts the script execution,
 								// in the order as added
 		} catch (Exception e) {
