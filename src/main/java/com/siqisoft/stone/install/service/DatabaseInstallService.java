@@ -54,7 +54,8 @@ public class DatabaseInstallService {
 	public boolean runSql(DatabaseConnection databaseConnection) {
 
 		ResourceDatabasePopulator rdp = new ResourceDatabasePopulator();
-		String basePath = "/sql-install/" + databaseConnection.getDbType();
+		String databaseType = databaseConnection.getDbType();
+		String basePath = "/sql-install/" + databaseType;
 		Properties props = new OrderedProperties();
 		try {
 			props.load(new ClassPathResource(basePath + "/sql.properties")
@@ -65,9 +66,15 @@ public class DatabaseInstallService {
 			}
 
 			Connection conn = getConnection(databaseConnection);
+			rdp.setIgnoreFailedDrops(true);
+			rdp.setSqlScriptEncoding("UTF-8");
+			if ("Oracle".equals(databaseType)) {
+				rdp.setSeparator("/");
+			}
 			rdp.populate(conn); // this starts the script execution,
 								// in the order as added
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new BusinessException("执行初始化sql时出错!"
 					+ JsonUtil.clearString(e.getMessage()));
 		}
