@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <title>stone</title>
-<%@ include file="/include/includeBootstrap.jsp"%>
+<%@ include file="/include/include.jsp"%>
 <script type="text/javascript" src="${appPath}/develop/Index.js"></script>
 </head>
 <body style="overflow: scroll;">

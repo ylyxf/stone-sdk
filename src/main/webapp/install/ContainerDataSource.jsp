@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <title>stone</title>
 
-<%@ include file="/include/includeBootstrap.jsp"%>
+<%@ include file="/include/include.jsp"%>
 <script type="text/javascript"  src="${appPath}/install/ContainerDataSource.js"></script>
 </head>
 <body>
@@ -18,7 +18,7 @@
 	  		  <div class="form-group">
 			    <label for="dbType" class="col-sm-2 control-label">数据库</label>
 			    <div class="col-sm-10">
-			    <select class="form-control" id="dbType" name="dbType">
+			    <select class="form-control" id="dbType" name="dbType" required>
 					  <option value="PostgreSql">PostgreSql</option>
 					  <option value="Oracle">Oracle</option>
 				</select>

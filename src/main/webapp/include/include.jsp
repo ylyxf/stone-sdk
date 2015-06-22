@@ -1,22 +1,20 @@
 <%@page contentType="text/html;charset=UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@page contentType="text/html;charset=UTF-8"%>
-<%
-	request.setAttribute("appPath", request.getContextPath());
-%>
-<title>教育管理系统-eduadmin</title>
+<%@ include file="/include/includeSegment.jsp"%>
 <script type="text/javascript">
 	var appPath = "${appPath}";
 </script>
+<!-- bootstarp -->
+<link rel="stylesheet" href="${appPath}/include/normalize.css">
+<link rel="stylesheet" href="${appPath}/include/bootstrap-3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="${appPath}/include/font-awesome-4.3.0/css/font-awesome.min.css">
+
 <!-- esayui的css -->
 <link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-1.4.2/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-1.4.2/themes/icon.css">
 <!-- 基于esayui定制的css -->
-<link rel="stylesheet" href="${appPath}/include/font-awesome-4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-config/easyui-config.css">
 <link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-config/themes/icon.css">
+
 <!--  esayui的js -->
 <script type="text/javascript"  src="${appPath}/include/jquery-easyui-1.4.2/jquery.min.js"></script>
 <script type="text/javascript"  src="${appPath}/include/jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
@@ -27,6 +25,7 @@
 <script type="text/javascript" src="${appPath}/include/jquery-easyui-config/easyui-extension.js"></script>
 
 <script type="text/javascript" src="${appPath}/include/jquery.stone.js"></script>
+<script type="text/javascript" src="${appPath}/include/urplus.js"></script>
 
 <script type="text/javascript">
 (function($){

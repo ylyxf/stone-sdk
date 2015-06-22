@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <title>stone</title>
 
-<%@ include file="/include/includeBootstrap.jsp"%>
+<%@ include file="/include/include.jsp"%>
 <script type="text/javascript"  src="${appPath}/install/InnerDataSource.js"></script>
 </head>
 <body>

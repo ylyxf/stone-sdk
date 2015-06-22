@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <title>stone</title>
 
-<%@ include file="/include/includeBootstrap.jsp"%>
+<%@ include file="/include/include.jsp"%>
 </head>
 <body>
 <div class="container">

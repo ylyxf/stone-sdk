@@ -3,7 +3,6 @@ package com.siqisoft.stone.develop.controller;
 import java.util.Map;
 
 import org.siqisource.stone.ui.AjaxResponse;
-import org.siqisource.stone.ui.bt.Paging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.siqisoft.stone.develop.model.Project;
 import com.siqisoft.stone.develop.service.ArchetypeService;
 import com.siqisoft.stone.develop.service.DatabaseService;
+import com.siqisoft.stone.develop.utils.Paging;
 
 @Controller
 public class DevelopController {
@@ -32,7 +32,7 @@ public class DevelopController {
 
 	@RequestMapping("/develop/tableListData.do")
 	@ResponseBody
-	public Map<String,Object>  tableListData(Paging paging) {
+	public Map<String, Object> tableListData(Paging paging) {
 		return databaseService.listTable(paging);
 	}
 

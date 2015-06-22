@@ -18,7 +18,6 @@ import javax.sql.DataSource;
 
 import org.apache.commons.lang.StringUtils;
 import org.siqisource.stone.exceptions.BusinessException;
-import org.siqisource.stone.ui.bt.Paging;
 import org.siqisource.stone.utils.NameConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
@@ -26,6 +25,7 @@ import org.springframework.util.ReflectionUtils;
 import com.siqisoft.stone.develop.model.Column;
 import com.siqisoft.stone.develop.model.Table;
 import com.siqisoft.stone.develop.utils.JdbcUtils;
+import com.siqisoft.stone.develop.utils.Paging;
 
 @Service
 public class DatabaseService {

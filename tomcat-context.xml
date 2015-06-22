@@ -8,5 +8,5 @@
 	<Resource name="jdbc/urplus" global="jdbc/urplus" auth="Container"
 		type="javax.sql.DataSource" driverClassName="oracle.jdbc.driver.OracleDriver"
 		url="jdbc:oracle:thin:@10.19.52.11:1521:orcl" username="urplus"
-		password="urplus" maxActive="100" maxIdle="20" minIdle="5" maxWait="10000" />
+		password="hello" maxActive="100" maxIdle="20" minIdle="5" maxWait="10000" />
 </Context>
