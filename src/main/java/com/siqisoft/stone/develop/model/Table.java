@@ -8,47 +8,47 @@ public class Table {
 	/**
 	 * 数据库表名：st_table_name
 	 */
-	private String name;
+	private String name = "";
 
 	/**
 	 * 数据库注释
 	 */
-	private String comment;
+	private String comment = "";
 
 	/**
 	 * 数据库表名,初始化时与表名相同
 	 */
-	private String label;
+	private String label = "";
 
 	/**
 	 * 模块包名
 	 */
-	private String modulePackageName;
+	private String modulePackageName = "";
 
 	/**
 	 * 模块路径
 	 */
-	private String modulePath;
+	private String modulePath = "";
 
 	/**
 	 * 自动生成主键
 	 * */
-	private boolean autoGenerateKey;
+	private boolean autoGenerateKey = true;
 
 	/**
 	 * 是否生成树代码
 	 * */
-	private boolean treeCode;
+	private boolean treeCode = false;
 
 	/**
 	 * 实体名,驼峰首字母大写：Entity
 	 */
-	private String entity;
+	private String entity = "";
 
 	/**
 	 * 变量名,驼峰首字母小写：entity
 	 */
-	private String lowerEntity;
+	private String lowerEntity = "";
 
 	/**
 	 * 列

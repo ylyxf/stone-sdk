@@ -46,7 +46,7 @@
 			<div class="col-md-3">
 		  		<i class="fa fa-group fa-5x"></i>
 		  		<div>
-		  		<a href="#" class="iconNav" link="${appPath}/develop/Index.do">开发选项</a>
+		  		<a href="#" class="iconNav" link="${appPath}/develop/Index.do">代码生成</a>
 		  		</div>
 			</div>
 		</div>

@@ -24,8 +24,9 @@
 <!-- 基于esayui的扩展 -->
 <script type="text/javascript" src="${appPath}/include/jquery-easyui-config/easyui-extension.js"></script>
 
+<!-- stone -->
+<script type="text/javascript" src="${appPath}/include/jquery-easyui-config/easyui.stone.js"></script>
 <script type="text/javascript" src="${appPath}/include/jquery.stone.js"></script>
-<script type="text/javascript" src="${appPath}/include/urplus.js"></script>
 
 <script type="text/javascript">
 (function($){

@@ -17,5 +17,6 @@
 		<mapper resource="mappers/RoleUserMapper.xml"/>
 		<mapper resource="org/siqisource/stone/user/mapper/GroupUserMapper.xml"/>
 		<mapper resource="org/siqisource/stone/role/mapper/RoleUserMapper.xml"/>
+		<mapper resource="org/siqisource/stone/config/mapper/ConfigMapper.xml"/>
 	</mappers>
 </configuration>

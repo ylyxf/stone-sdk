@@ -18,6 +18,7 @@ import javax.sql.DataSource;
 
 import org.apache.commons.lang.StringUtils;
 import org.siqisource.stone.exceptions.BusinessException;
+import org.siqisource.stone.ui.easyui.Paging;
 import org.siqisource.stone.utils.NameConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
@@ -25,7 +26,6 @@ import org.springframework.util.ReflectionUtils;
 import com.siqisoft.stone.develop.model.Column;
 import com.siqisoft.stone.develop.model.Table;
 import com.siqisoft.stone.develop.utils.JdbcUtils;
-import com.siqisoft.stone.develop.utils.Paging;
 
 @Service
 public class DatabaseService {
@@ -33,7 +33,7 @@ public class DatabaseService {
 	@Resource(name = "${dataSource.name}")
 	DataSource dataSource;
 
-	public Map<String, Object> listTable(Paging paging) {
+	public Map<String, Object> listTable(Paging paging, String name) {
 		List<Table> tableList = new ArrayList<Table>();
 		try {
 			Connection conn = dataSource.getConnection();
@@ -45,6 +45,13 @@ public class DatabaseService {
 				table.setLabel(rs.getString("REMARKS"));
 				table.setComment(rs.getString("REMARKS"));
 				table.setName(rs.getString("TABLE_NAME"));
+				if (StringUtils.isNotBlank(name)) {//根据关键字过滤
+					String tableName = table.getName().toLowerCase();
+					if (tableName.indexOf(name.toLowerCase()) == -1) {
+						continue;
+					}
+
+				}
 				tableList.add(table);
 			}
 		} catch (SQLException e) {
@@ -56,7 +63,7 @@ public class DatabaseService {
 		return result;
 	}
 
-	public Table read(String tableName) {
+	public Table read(String tableName,String ignorePrefix) {
 		Table table = new Table();
 		try {
 			Connection conn = dataSource.getConnection();
@@ -71,16 +78,12 @@ public class DatabaseService {
 		} catch (SQLException e) {
 			throw new BusinessException("读取表内容时出错：" + e.getMessage());
 		}
-
-		String entiryName = tableName;
-		int indexPos = tableName.indexOf('_');
-		if (indexPos <= 3) {
-			entiryName = entiryName.substring(indexPos);
-		}
+		ignorePrefix = ignorePrefix==null?"":ignorePrefix.toLowerCase();
+		String entiryName = tableName.toLowerCase().replaceFirst(ignorePrefix, "");
 		entiryName = NameConverter.columnToProperty(entiryName);
 		entiryName = NameConverter.firstLetterUpper(entiryName);
-
 		table.setEntity(entiryName);
+		table.setLowerEntity(NameConverter.firstLetterLower(entiryName));
 		this.setColums(table);
 		return table;
 	}
@@ -128,18 +131,24 @@ public class DatabaseService {
 					null);
 			while (rs.next()) {
 				Column column = new Column();
-				column.setComment(rs.getString("REMARKS"));
-				column.setLabel(column.getComment());
+				String comment = rs.getString("REMARKS");
+				comment = comment==null?"":comment;
+				column.setComment(comment);
+				column.setLabel(comment);
 				column.setName(rs.getString("COLUMN_NAME"));
 				column.setDataType(rs.getString("TYPE_NAME"));
 				column.setSize(rs.getInt("COLUMN_SIZE"));
 				column.setDecimalDigits(rs.getInt("DECIMAL_DIGITS"));
 				column.setJdbcType(JdbcUtils.getJdbcType(rs.getInt("DATA_TYPE")));
-				String isAutoIncrement = rs.getString("IS_AUTOINCREMENT");
-				if ("YES".equals(isAutoIncrement)) {
-					column.setAutoIncrement(true);
-				} else {
-					column.setAutoIncrement(false);
+				
+				String databaseName = metaData.getDatabaseProductName();
+				if(databaseName.toLowerCase().indexOf("oracle")==-1){
+					String isAutoIncrement = rs.getString("IS_AUTOINCREMENT");
+					if ("YES".equals(isAutoIncrement)) {
+						column.setAutoIncrement(true);
+					} else {
+						column.setAutoIncrement(false);
+					}
 				}
 
 				column.setJavaType(JdbcUtils.getJavaType(rs.getInt("DATA_TYPE")));
@@ -159,17 +168,6 @@ public class DatabaseService {
 		}
 	}
 
-	public void mergerTable(Table table, Table tableParam) {
-		table.setLabel(tableParam.getLabel());
-		table.setModulePackageName(tableParam.getModulePackageName());
-		table.setModulePath(tableParam.getModulePackageName().replaceAll("[.]",
-				"/"));
-		table.setEntity(tableParam.getEntity());
-		table.setLowerEntity(NameConverter.firstLetterLower(tableParam
-				.getEntity()));
-		table.setAutoGenerateKey(tableParam.isAutoGenerateKey());
-		table.setTreeCode(tableParam.isTreeCode());
-	}
 
 	private List<Table> paging(List<Table> tableList, final Paging paging) {
 		Collections.sort(tableList, new Comparator<Table>() {
@@ -197,8 +195,8 @@ public class DatabaseService {
 			}
 
 		});
-		int offset = paging.getOffset();
-		int limit = paging.getLimit();
+		int offset = paging.getRowBounds().getOffset();
+		int limit = paging.getRowBounds().getLimit();
 		if (tableList.size() - offset < limit) {
 			limit = tableList.size() - offset;
 		}

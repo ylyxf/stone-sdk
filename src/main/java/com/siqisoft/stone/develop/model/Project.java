@@ -1,5 +1,6 @@
 package com.siqisoft.stone.develop.model;
 
+import org.apache.commons.lang.StringUtils;
 import org.siqisource.stone.config.annotation.Config;
 import org.siqisource.stone.config.annotation.ConfigClass;
 import org.siqisource.stone.web.jspservice.JspService;
@@ -7,20 +8,22 @@ import org.springframework.stereotype.Component;
 
 @Component
 @JspService
-@ConfigClass(label="项目信息")
-public class Project { 
+@ConfigClass(label = "项目信息")
+public class Project {
 
-	@Config(label="项目名称")
+	@Config(label = "项目名称")
 	private String name;
 
-	@Config(label="项目路径")
+	@Config(label = "项目路径")
 	private String path;
 
-	@Config(label="基本包名")
+	@Config(label = "基本包名")
 	private String basicPackage;
-	
-	@Config(label="代码模板")
+
+	@Config(label = "代码模板")
 	private String codeTemplate;
+
+	private String basicPath;
 
 	public String getName() {
 		return name;
@@ -56,6 +59,23 @@ public class Project {
 
 	public String getBasicPackagePath() {
 		return basicPackage.replaceAll("[.]", "/");
+	}
+
+	public String getBasicPath() {
+		return basicPath;
+	}
+
+	public void setBasicPath(String basicPath) {
+		this.basicPath = basicPath;
+	}
+
+	public boolean usable() {
+		if (StringUtils.isNotBlank(name) && StringUtils.isNotBlank(path)
+				&& StringUtils.isNotBlank(basicPackage)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

@@ -14,6 +14,4 @@ target/
 .settings/
 src/main/webapp/WEB-INF/logs/
 src/main/webapp/WEB-INF/download/
-src/main/webapp/WEB-INF/templates/project/folder/src/main/webapp/include/jquery-easyui-1.4.1/
-src/main/webapp/WEB-INF/templates/project/folder/src/main/webapp/include/bootstrap-3.1.1/
-
+tomcat-context.xml

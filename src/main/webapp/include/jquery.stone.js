@@ -1,3 +1,10 @@
+/**
+ * jquery.stone.js 是一个jquery扩展。
+ * 它扩展了jquery实例的方法，也扩展了jquery的全局方法。
+ * jquery实例方法
+ * jquery全局方法放在stone命名空间下
+ * @param $
+ */
 (function($){
     $.fn.extend({
     		
@@ -29,14 +36,21 @@
     	},
     	
     	//设置一些非value的html控件
-    	initFormValues:function(){
+    	formInit:function(){
     		var selectFields = this.find("select");
     		$.each(selectFields,function(){
     				$(this).val($(this).attr("value"));
     		});
     	}
     	
-    	
     });  
-     
+    
+    $.stone={
+    		post:function(url,data,success,error,dataType){
+    			$.post(url, $.param(data,true),function(repoData, textStatus, jqXHR){
+    				stone.ajrp(repoData, success,error);
+    			},dataType);
+    		}
+    };
+    
  })(jQuery);  

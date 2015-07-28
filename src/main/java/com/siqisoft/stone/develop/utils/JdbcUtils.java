@@ -25,6 +25,7 @@ public class JdbcUtils {
 		TYPE_MAP.put(Types.TIMESTAMP, Date.class.getName());
 		TYPE_MAP.put(Types.FLOAT, Float.class.getName());
 		TYPE_MAP.put(Types.DOUBLE, Double.class.getName());
+		TYPE_MAP.put(Types.CHAR, Boolean.class.getName());
 	}
 
 	public static String getJavaType(Integer dataType) {

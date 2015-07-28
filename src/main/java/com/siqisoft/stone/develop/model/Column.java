@@ -5,12 +5,12 @@ public class Column {
 	/**
 	 * 列标题
 	 */
-	private String label;
+	private String label = "";
 
 	/**
 	 * 注释
 	 */
-	private String comment;
+	private String comment = "";
 
 	/**
 	 * 列名
@@ -60,7 +60,7 @@ public class Column {
 	/**
 	 * 是否自增长
 	 */
-	private Boolean autoIncrement;
+	private Boolean autoIncrement = false;
 
 	public int getSize() {
 		return size;
