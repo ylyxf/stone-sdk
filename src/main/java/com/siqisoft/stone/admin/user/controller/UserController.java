@@ -7,6 +7,7 @@ import org.siqisource.stone.group.service.GroupService;
 import org.siqisource.stone.orm.SqlKey;
 import org.siqisource.stone.orm.condition.SimpleCondition;
 import org.siqisource.stone.ui.AjaxResponse;
+import org.siqisource.stone.ui.Notify;
 import org.siqisource.stone.user.model.User;
 import org.siqisource.stone.user.service.GroupUserService;
 import org.siqisource.stone.user.service.UserService;
@@ -72,7 +73,7 @@ public class UserController {
 	@ResponseBody
 	public AjaxResponse userEdit(User user, Integer defaultGroupId, Model model) {
 		service.updateUser(user, defaultGroupId);
-		return new AjaxResponse("更新成功",user);
+		return new Notify("更新成功",user);
 	}
 	
 	@RequestMapping("/user/UserAddInit.do")
@@ -85,21 +86,21 @@ public class UserController {
 	@ResponseBody
 	public AjaxResponse userAdd(User user, Integer defaultGroupId, Model model) {
 		service.addUser(user, defaultGroupId);
-		return new AjaxResponse("新增成功",user);
+		return new Notify("新增成功",user);
 	}
 	
 	@RequestMapping("/user/userDelete.do")
 	@ResponseBody
 	public AjaxResponse userDelete(Integer id,Integer currentGroupId, Model model) {
 		this.service.deleteUser(id);
-		return new AjaxResponse("删除成功",id);
+		return new Notify("删除成功",id);
 	}
 	
 	@RequestMapping("/user/userRemove.do")
 	@ResponseBody
 	public AjaxResponse userRemove(Integer id,Integer currentGroupId, Model model) {
 		this.service.removeUser(id, currentGroupId);
-		return new AjaxResponse("移除成功",id); 
+		return new Notify("移除成功",id); 
 	}
 
 }

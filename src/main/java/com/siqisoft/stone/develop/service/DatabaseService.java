@@ -68,6 +68,10 @@ public class DatabaseService {
 		try {
 			Connection conn = dataSource.getConnection();
 			DatabaseMetaData metaData = conn.getMetaData();
+			
+			String databaseName = metaData.getDatabaseProductName();
+			table.setDatabaseName(databaseName.toLowerCase());
+			
 			ResultSet rs = metaData.getTables(null, null, tableName,
 					new String[] { "TABLE" });
 			if (rs.next()) {
@@ -136,10 +140,11 @@ public class DatabaseService {
 				column.setComment(comment);
 				column.setLabel(comment);
 				column.setName(rs.getString("COLUMN_NAME"));
-				column.setDataType(rs.getString("TYPE_NAME"));
+				String dataType = rs.getString("TYPE_NAME");
+				column.setDataType(dataType);
 				column.setSize(rs.getInt("COLUMN_SIZE"));
 				column.setDecimalDigits(rs.getInt("DECIMAL_DIGITS"));
-				column.setJdbcType(JdbcUtils.getJdbcType(rs.getInt("DATA_TYPE")));
+				column.setJdbcType(JdbcUtils.getJdbcType(rs.getInt("DATA_TYPE"),dataType));
 				
 				String databaseName = metaData.getDatabaseProductName();
 				if(databaseName.toLowerCase().indexOf("oracle")==-1){
@@ -151,7 +156,7 @@ public class DatabaseService {
 					}
 				}
 
-				column.setJavaType(JdbcUtils.getJavaType(rs.getInt("DATA_TYPE")));
+				column.setJavaType(JdbcUtils.getJavaType(rs.getInt("DATA_TYPE"),dataType));
 
 				column.setProperty(NameConverter.columnToProperty(column
 						.getName()));

@@ -6,6 +6,7 @@ import org.siqisource.stone.group.model.Group;
 import org.siqisource.stone.group.service.GroupService;
 import org.siqisource.stone.orm.condition.Condition;
 import org.siqisource.stone.ui.AjaxResponse;
+import org.siqisource.stone.ui.Notify;
 import org.siqisource.stone.ui.easyui.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,7 +54,7 @@ public class GroupController {
     @ResponseBody
     public AjaxResponse add(Group group, Model model) {
         service.insert(group);
-        return new AjaxResponse("新增成功",service.toTreeNode(group));
+        return new Notify("新增成功",service.toTreeNode(group));
     }
     
     @RequestMapping("/group/groupDelete.do")
@@ -61,7 +62,7 @@ public class GroupController {
     public AjaxResponse delete(Integer id, Model model) {
     	Group group = this.service.read(id);
         service.logicDelete(id);
-        return new AjaxResponse("删除成功",service.toTreeNode(group));
+        return new Notify("删除成功",service.toTreeNode(group));
     }
     
     @RequestMapping("/group/GroupEditInit.do")
@@ -75,7 +76,7 @@ public class GroupController {
     @ResponseBody
     public AjaxResponse edit(Group group, Model model) {
         service.update(group);
-        return  new AjaxResponse("编辑成功",service.toTreeNode(group));
+        return  new Notify("编辑成功",service.toTreeNode(group));
     }
 
 }

@@ -10,6 +10,7 @@ import org.siqisource.stone.role.model.RoleUserView;
 import org.siqisource.stone.role.service.RoleService;
 import org.siqisource.stone.role.service.RoleUserService;
 import org.siqisource.stone.ui.AjaxResponse;
+import org.siqisource.stone.ui.Notify;
 import org.siqisource.stone.ui.easyui.Paging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,7 +59,7 @@ public class RoleUserController {
 		if(groupUserCode != null){
 			roleUserAdminService.addUserToRole(roleId, groupUserCode);
 		}
-		return new AjaxResponse("关联成功");
+		return new Notify("关联成功");
 	}
 
 	@RequestMapping("/role/removeUserFromRole.do")
@@ -68,7 +69,7 @@ public class RoleUserController {
 		SimpleCondition condition = new SimpleCondition();
 		condition.andIn("id", id);
 		this.service.deleteBatch(condition);
-		return new AjaxResponse("移除成功");
+		return new Notify("移除成功");
 	}
 
 }

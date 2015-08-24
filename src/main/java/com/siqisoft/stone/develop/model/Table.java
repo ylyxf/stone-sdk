@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Table {
 	
+	private String databaseName = "";
+	
 	/**
 	 * 数据库表名：st_table_name
 	 */
@@ -167,6 +169,14 @@ public class Table {
 
 	public void setModulePath(String modulePath) {
 		this.modulePath = modulePath;
+	}
+
+	public String getDatabaseName() {
+		return databaseName;
+	}
+
+	public void setDatabaseName(String databaseName) {
+		this.databaseName = databaseName;
 	}
 	
 }

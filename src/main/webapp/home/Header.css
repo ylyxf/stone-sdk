@@ -1,0 +1,30 @@
+.beginMenu {
+    background: #fafafa none repeat scroll 0 0;
+    border: 1px solid .ddd;
+    direction: ltr;
+    height: 126px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+.beginMenu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.beginMenu li {
+    background: rgba(0, 0, 0, 0) url("images/gears.png") no-repeat scroll 0 center;
+    display: block;
+    float: left;
+    line-height: 150%;
+    margin: 0;
+    padding: 0;
+    width: 150px;
+}
+.beginMenu a {
+    color: .444;
+    padding: 0 5px 0 20px;
+    text-decoration: none;
+}
+.beginMenu a:hover {
+    color: .e26b1d;
+}

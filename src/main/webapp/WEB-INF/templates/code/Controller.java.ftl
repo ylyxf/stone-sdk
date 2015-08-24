@@ -26,7 +26,7 @@ public class ${table.entity}Controller {
 		return "${table.modulePath}/${table.entity}List";
 	}
 
-	@RequestMapping("/${table.modulePath}/${table.entity}ListData.do")
+	@RequestMapping("/${table.modulePath}/${table.lowerEntity}ListData.do")
 	@ResponseBody
 	public  List<${table.entity}> listData(${table.entity}QueryForm ${table.lowerEntity}QueryForm) {
 		Condition condition = ${table.entity}ConditionBuilder.listCondition(${table.lowerEntity}QueryForm);

@@ -13,6 +13,6 @@ public class RolePerms {
 	private static final String ENTITY = "role";
 
 	@Permission("分配用户")
-	public static final String ASSIGN_USER = ENTITY + ":assignUser";
+	public static final String SYNC_USER = ENTITY + ":assignUser";
 
 }

@@ -3,11 +3,9 @@
 <script type="text/javascript">
 	var appPath = "${appPath}";
 </script>
-<!-- bootstarp -->
-<link rel="stylesheet" href="${appPath}/include/normalize.css">
-<link rel="stylesheet" href="${appPath}/include/bootstrap-3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet" href="${appPath}/include/font-awesome-4.3.0/css/font-awesome.min.css">
 
+<link rel="stylesheet" type="text/css" href="${appPath}/include/bootstrap.min.css">
+<link rel="stylesheet" href="${appPath}/include/font-awesome-4.3.0/css/font-awesome.min.css">
 <!-- esayui的css -->
 <link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-1.4.2/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="${appPath}/include/jquery-easyui-1.4.2/themes/icon.css">
@@ -25,8 +23,7 @@
 <script type="text/javascript" src="${appPath}/include/jquery-easyui-config/easyui-extension.js"></script>
 
 <!-- stone -->
-<script type="text/javascript" src="${appPath}/include/jquery-easyui-config/easyui.stone.js"></script>
-<script type="text/javascript" src="${appPath}/include/jquery.stone.js"></script>
+<script type="text/javascript" src="${appPath}/include/stone/stone-easyui.js"></script>
 
 <script type="text/javascript">
 (function($){

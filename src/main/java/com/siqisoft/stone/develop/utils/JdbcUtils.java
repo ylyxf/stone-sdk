@@ -28,11 +28,14 @@ public class JdbcUtils {
 		TYPE_MAP.put(Types.CHAR, Boolean.class.getName());
 	}
 
-	public static String getJavaType(Integer dataType) {
+	public static String getJavaType(Integer dataType,String javaType) {
+		if("NUMBER".equals(javaType)){
+			return TYPE_MAP.get(Types.NUMERIC);
+		}
 		return TYPE_MAP.get(dataType);
 	}
 
-	public static String getJdbcType(Integer dataType) {
+	public static String getJdbcType(Integer dataType,String javaType) {
 		if (dataType == Types.BIT) {
 			dataType = Types.BOOLEAN;
 		}

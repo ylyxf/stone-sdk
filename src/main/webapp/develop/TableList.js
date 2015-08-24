@@ -7,14 +7,13 @@ $(document).ready(function() {
 	});
 	
 	$("#generateCode").on('click',function(){
-		var params = $("#tableListForm").formToObject();
-		//获得到选中的表名 
-		var rows = $('#tableList').datagrid('getSelections');
-		params.tableNameList = easyu.datagrid.row2Ids(rows,'name');
-		
-		$.stone.post(appPath+"/develop/generateCode.do",params,function(result){
-			console.log(result);
-		});
+		var config={
+				columnName:"name",
+				submitName:"tableNameList",
+				formIdSelector:"#tableListForm",
+				confirm:"确定要生成代码吗？"
+		}
+		stone.postGrid('#tableList',appPath+"/develop/generateCode.do",config)
 	});
 	
 	$("#query").on('click',function(){

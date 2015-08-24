@@ -131,6 +131,7 @@ public class CodeService {
 				try {
 					CodeFile codeFile = this.codeFileMap.get(codeFileName);
 					Map<String, Object> map = new HashMap<String, Object>();
+					map.put("dbtype", table);
 					map.put("table", table);
 					map.put("project", project);
 					// 源文件

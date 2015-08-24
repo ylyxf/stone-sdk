@@ -6,6 +6,7 @@ import org.siqisource.stone.config.model.ConfigClassEntity;
 import org.siqisource.stone.config.model.ConfigEntity;
 import org.siqisource.stone.config.service.ConfigService;
 import org.siqisource.stone.ui.AjaxResponse;
+import org.siqisource.stone.ui.Notify;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,7 +58,7 @@ public class ConfigController {
 	public AjaxResponse edit(String classCode, ConfigQueryForm configQueryForm,
 			Model model) {
 		service.updateConfigByEntity(classCode, configQueryForm.getConfigList());
-		return new AjaxResponse("保存成功", configQueryForm.getClassCode());
+		return new Notify("保存成功",configQueryForm.getClassCode());
 	}
 
 }

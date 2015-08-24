@@ -4,10 +4,15 @@
 <head>
 <meta charset="utf-8">
 <%@ include file="/include/include.jsp"%>
+<title>stone-sdk</title>
 <script type="text/javascript" src="${appPath}/develop/TableList.js"></script>
 </head>
 <body>
-	<div class="easyui-panel" title="数据库表清单" style="width: 100%; height: 100%;">
+<div class="easyui-layout"  data-options="fit:true">
+<div data-options="region:'north',collapsible:false" style="height:30px;">
+<%@ include file="/home/Header.jsp"%>	
+</div>
+<div data-options="region:'center',title:'书院学生信息维护'">
 	<div id="tb">
 	<form id="tableListForm" method="post">
 	<input type="hidden" name="easyuiform" value="true">
@@ -39,7 +44,7 @@
 		</td>
 		</tr>
 		</table>
-		</form>
+	</form>
 	</div>
 	<table id="tableList" class="easyui-datagrid"  pagination="true" toolbar="#tb"  fit='true' pageSize='20'
 		url="${appPath}/develop/tableListData.do">
@@ -50,6 +55,7 @@
 			</tr>
 		</thead>
 	</table>
-	</div>
+</div>
+</div>
 </body>
 </html>

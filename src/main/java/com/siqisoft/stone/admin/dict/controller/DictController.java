@@ -5,6 +5,10 @@ import java.util.List;
 import org.siqisource.stone.dict.model.Dict;
 import org.siqisource.stone.dict.service.DictService;
 import org.siqisource.stone.orm.condition.Condition;
+import org.siqisource.stone.ui.AjaxResponse;
+import org.siqisource.stone.ui.Notify;
+import org.siqisource.stone.ui.easyui.PagedRows;
+import org.siqisource.stone.ui.easyui.Paging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.siqisoft.stone.admin.dict.service.DictConditionBuilder;
-
-
 
 @Controller
 public class DictController {
@@ -28,10 +30,11 @@ public class DictController {
 
 	@RequestMapping("/dict/dictListData.do")
 	@ResponseBody
-	public List<Dict> listData(DictQueryForm dictQueryForm) {
+	public PagedRows<Dict> listData(DictQueryForm dictQueryForm, Paging paging) {
 		Condition condition = DictConditionBuilder.listCondition(dictQueryForm);
-		List<Dict> dictList = service.list(condition);
-		return dictList;
+		int count = service.count(condition);
+		List<Dict> dictList = service.list(condition, paging.getRowBounds());
+		return new PagedRows<Dict>(count, dictList);
 	}
 
 	@RequestMapping("/dict/DictRead.do")
@@ -54,13 +57,12 @@ public class DictController {
 
 	@RequestMapping("/dict/dictDelete.do")
 	@ResponseBody
-	public int delete(String[] code, Model model) {
+	public AjaxResponse delete(String[] codeList, Model model) {
 		// 判断是否被关联
-		if(code!=null){
-			service.deleteBatch(code);
-			return code.length;
+		if (codeList != null) {
+			service.deleteBatch(codeList);
 		}
-		return 0;
+		return new Notify("成功删除"+codeList.length+"条记录");
 	}
 
 	@RequestMapping("/dict/DictEditInit.do")
@@ -75,6 +77,5 @@ public class DictController {
 		service.update(dict);
 		return this.read(dict.getCode(), model);
 	}
-
 
 }

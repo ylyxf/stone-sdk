@@ -7,6 +7,7 @@ import org.siqisource.stone.role.model.Role;
 import org.siqisource.stone.role.service.RoleOperationService;
 import org.siqisource.stone.role.service.RoleService;
 import org.siqisource.stone.ui.AjaxResponse;
+import org.siqisource.stone.ui.Notify;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,14 +38,14 @@ public class RoleOperationController {
 	@ResponseBody
 	public AjaxResponse addOperationToRole(Integer roleId,String operationCode, Model model) {
 		this.service.addOperationToRole(roleId, operationCode);
-		return  new AjaxResponse("设置成功");
+		return  new Notify("设置成功");
 	}
 	
 	@RequestMapping("/role/removeOperationFromRole.do")
 	@ResponseBody
 	public AjaxResponse removeOperationFromRole(Integer roleId,String operationCode, Model model) {
 		this.service.removeOperationFromRole(roleId, operationCode);
-		return  new AjaxResponse("取消成功");
+		return  new Notify("取消成功");
 	}
 	
 	

@@ -6,6 +6,7 @@ import org.siqisource.stone.orm.condition.Condition;
 import org.siqisource.stone.role.model.Role;
 import org.siqisource.stone.role.service.RoleService;
 import org.siqisource.stone.ui.AjaxResponse;
+import org.siqisource.stone.ui.Notify;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,7 +60,7 @@ public class RoleController {
 		// 判断是否被关联
 		if(id!=null){
 			service.deleteBatch(id);
-			return new AjaxResponse("删除成功",id.length) ;
+			return new Notify("删除成功",id.length) ;
 		}
 		return new AjaxResponse("未删除任何数据") ;
 	}

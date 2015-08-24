@@ -3,6 +3,7 @@ package com.siqisoft.stone.develop.controller;
 import java.util.Map;
 
 import org.siqisource.stone.ui.AjaxResponse;
+import org.siqisource.stone.ui.Notify;
 import org.siqisource.stone.ui.easyui.Paging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,7 +44,7 @@ public class DevelopController {
 	@ResponseBody
 	public AjaxResponse initProject() {
 		archetypeService.initProject();
-		return new AjaxResponse("操作成功");
+		return new Notify("操作成功");
 	}
 
 	@RequestMapping("/develop/tableListData.do")
@@ -57,7 +58,7 @@ public class DevelopController {
 	@ResponseBody
 	public AjaxResponse generateCode(GenerateCodeParams generateCodeParams) {
 		codeService.generateCode(generateCodeParams);
-		return new AjaxResponse("操作成功");
+		return new Notify("操作成功");
 	}
 
 }

@@ -33,33 +33,12 @@ $(document).ready(function() {
 	
 	//删除
 	$("#remove").on('click',function(){
-		$.messager.confirm('提醒', '确认要删除选中的记录吗？', function(confirmed){
-			if(!confirmed){
-				return false;
-			}
-			 $("#dictListForm").form('submit', {
-				url:appPath+"/dict/dictDelete.do",
-				success:function(data){
-					var data = data.trim();
-					var dataObject = $.parseJSON(data);
-					if(dataObject.error){
-						 $.messager.alert('错误',dataObject.message);
-						 return false;
-					}else{
-						//删除成功
-						$.messager.show({
-							 title:'提醒',
-							 msg:'成功删除'+data+'条数据',
-							 timeout:3000,
-							 showType:'slide'
-						});
-					}
-					
-					//重新加载
-					$('#dictList').datagrid('load',{});
-				}
-			});
-		});
+		var config = {
+			columnName:"code",
+			submitName:"codeList",
+			confirm:'确实要删除选中的字典吗？'
+		};
+		stone.postGrid("#dictList",appPath+"/dict/dictDelete.do",config);
 	});
 	
 	

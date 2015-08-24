@@ -1,7 +1,7 @@
 <codeFiles>
 	<file name='Mapper.xml'
 		src="file:///D:/projects/stone-sdk/src/main/webapp/WEB-INF/templates/code/Mapper.xml.ftl"
-		dist="${project.path}/src/main/resources/mappers/${table.entity}.xml">
+		dist="${project.path}/src/main/resources/mappers/${table.entity}Mapper.xml">
 	</file>
 	
 	<file name='ConditionBuilder.java'

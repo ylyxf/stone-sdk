@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="${project.basicPackage}.${table.modulePackageName}.mapper.${table.entity}Mapper">
-
+<#if !table.databaseName?contains("oracle")>
 <insert id="insert" parameterType="${project.basicPackage}.${table.modulePackageName}.model.${table.entity}" 
-<#if  table.autoGenerateKey> useGeneratedKeys="true" <#list table.primaryColumns as column><#if column.autoIncrement> keyProperty="${column.name}"</#if></#list></#if>
->
+<#if  table.autoGenerateKey> useGeneratedKeys="true" <#list table.primaryColumns as column><#if column.autoIncrement> keyProperty="${column.name}"</#if></#list></#if> >
 INSERT INTO ${table.name} (
 	<#list table.commonColumns as column>
 	${column.name}<#if  column_has_next>,</#if>
@@ -15,7 +14,23 @@ INSERT INTO ${table.name} (
 	</#list>
 )
 </insert>
-
+</#if>
+<#if table.databaseName?contains("oracle")>
+<insert id="insert" parameterType="${project.basicPackage}.${table.modulePackageName}.model.${table.entity}">
+	<selectKey resultType="java.math.BigDecimal" order="BEFORE" keyProperty="id">  
+       SELECT SEQ_${table.name}_id.Nextval as ID from DUAL  
+   </selectKey>
+   INSERT INTO ${table.name} (
+	<#list table.columns as column>
+	${column.name}<#if  column_has_next>,</#if>
+	</#list> 
+	) VALUES (
+		<#list table.columns as column>
+		${r"#"}{${column.property} ,jdbcType=${column.jdbcType} }<#if  column_has_next>,</#if>
+		</#list>
+	)
+</insert>
+</#if>
 
 <insert id="insertPartitive" parameterType="map">
 	INSERT INTO ${table.name}  
@@ -50,12 +65,12 @@ INSERT INTO ${table.name} (
 
 <update id="update" parameterType="${project.basicPackage}.${table.modulePackageName}.model.${table.entity}">
 	UPDATE ${table.name} SET 
-	 	<#list table.commonColumns as column>
-		${column.name}<#if  column_has_next>,</#if>
+	 	<#list table.commonColumns as column> 
+	 	${column.name}= ${r"#"}{${column.property} ,jdbcType=${column.jdbcType} }<#if  column_has_next>,</#if>
 		</#list>
 	WHERE 
 	<#list table.primaryColumns as column>
-	${column.name} = ${r"#"}{id[${column_index}]} <#if  column_has_next> and </#if>
+	${column.name} = ${r"#"}{${column.property}} <#if  column_has_next> and </#if>
 	</#list>
 </update>
 	

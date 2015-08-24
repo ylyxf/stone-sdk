@@ -2,4 +2,4 @@
 <c:if test="${databaseInstallService.installed != 'true'}">
 <jsp:forward page="/install/InstallMain.jsp"></jsp:forward>
 </c:if>
-<c:redirect url="${request.contextPath}/index/Index.do"/>
+<c:redirect url="${request.contextPath}/home/Home.do"/>

@@ -25,16 +25,9 @@
 		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern"
-				value="[%-5p][%d{yyyy-MM-dd HH:mm:ss SSS\}][%t] %c{3\} - %m%n" />
+				value="[%-5p][%d{yyyy-MM-dd HH:mm:ss SSS\}][%t][%x] %c{3\}    - %m%n" />
 		</layout>
 	</appender>
-
-
-	<logger name="com.ibatis" additivity="false">
-		<level value="DEBUG" />
-		<appender-ref ref="SqlLogFile" />
-		<appender-ref ref="StdoutLogger" />
-	</logger>
 
 	<logger name="java.sql.Connection" additivity="false">
 		<level value="DEBUG" />
@@ -55,12 +48,6 @@
 	</logger>
 
 	<logger name="java.sql.ResultSet" additivity="false">
-		<level value="DEBUG" />
-		<appender-ref ref="SqlLogFile" />
-		<appender-ref ref="StdoutLogger" />
-	</logger>
-	
-	<logger name="org.apache.shiro" additivity="false">
 		<level value="DEBUG" />
 		<appender-ref ref="SqlLogFile" />
 		<appender-ref ref="StdoutLogger" />

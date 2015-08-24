@@ -1,13 +1,4 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Context>
-	<Resource name="jdbc/stone" global="jdbc/stone" auth="Container"
-		type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
-		url="jdbc:postgresql://127.0.0.1:5432/stone-sdk" username="postgres"
-		password="postgres" maxActive="100" maxIdle="20" minIdle="5" maxWait="10000" />
-
-	<Resource name="jdbc/urplus" global="jdbc/urplus" auth="Container"
-	type="javax.sql.DataSource" driverClassName="oracle.jdbc.driver.OracleDriver"
-	url="jdbc:oracle:thin:@10.19.52.25:1521:urpjw" username="urplus"
-	password="xxxx" maxActive="100" maxIdle="20" minIdle="5"
-	maxWait="10000" />
+	
 </Context>
