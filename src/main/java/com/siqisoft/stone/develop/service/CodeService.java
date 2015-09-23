@@ -144,7 +144,7 @@ public class CodeService {
 					String distFileName = template.parse("distFileName",
 							codeFile.getDist(), map);
 					FileUtils.writeStringToFile(new File(distFileName),
-							distFileContent);
+							distFileContent,"utf-8");
 				} catch (Exception e) {
 					throw new BusinessException("使用freemaker解析codeFile模板时出错", e);
 				}

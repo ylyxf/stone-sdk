@@ -39,6 +39,4 @@
 		<bean class="org.siqisource.stone.web.interceptor.HandlerInterceptor" />
 	</mvc:interceptors>
 
-
-
 </beans>

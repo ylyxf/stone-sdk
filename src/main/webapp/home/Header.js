@@ -9,7 +9,7 @@ $(document).ready(function() {
 	
 	//点击开始按钮
 	beginBtn.on('click', function() {
-		
+		console.log('button clicked');
 		if(beginPanel.dialog('options').closed){
 			beginPanel.dialog('open');
 		}else{

@@ -5,10 +5,12 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,13 +27,41 @@ import org.springframework.util.ReflectionUtils;
 
 import com.siqisoft.stone.develop.model.Column;
 import com.siqisoft.stone.develop.model.Table;
-import com.siqisoft.stone.develop.utils.JdbcUtils;
 
 @Service
 public class DatabaseService {
 
 	@Resource(name = "${dataSource.name}")
 	DataSource dataSource;
+	
+	private static Map<Integer, String> SQL_TYPE_TO_JAVA = new HashMap<Integer, String>();
+
+	private static Map<Integer, String> SQL_TYPE_TO_JDBC = new HashMap<Integer, String>();
+
+	static {
+		SQL_TYPE_TO_JAVA.put(Types.NUMERIC, Integer.class.getName());
+		SQL_TYPE_TO_JAVA.put(Types.DECIMAL, Float.class.getName());
+		SQL_TYPE_TO_JAVA.put(Types.INTEGER, Integer.class.getName());
+		SQL_TYPE_TO_JAVA.put(Types.SMALLINT, Integer.class.getName());
+		SQL_TYPE_TO_JAVA.put(Types.VARCHAR, String.class.getName());
+		SQL_TYPE_TO_JAVA.put(Types.BOOLEAN, Boolean.class.getName());
+		SQL_TYPE_TO_JAVA.put(Types.BIT, Boolean.class.getName());
+		SQL_TYPE_TO_JAVA.put(Types.DATE, Date.class.getName());
+		SQL_TYPE_TO_JAVA.put(Types.TIME, Date.class.getName());
+		SQL_TYPE_TO_JAVA.put(Types.TIMESTAMP, Date.class.getName());
+		SQL_TYPE_TO_JAVA.put(Types.FLOAT, Float.class.getName());
+		SQL_TYPE_TO_JAVA.put(Types.DOUBLE, Double.class.getName());
+		SQL_TYPE_TO_JAVA.put(Types.CHAR, Boolean.class.getName());
+
+		Field[] fields = Types.class.getFields();
+		for (Field field : fields) {
+			try {
+				SQL_TYPE_TO_JDBC.put(field.getInt(null), field.getName());
+			} catch (Exception e) {
+			}
+		}
+	}
+
 
 	public Map<String, Object> listTable(Paging paging, String name) {
 		List<Table> tableList = new ArrayList<Table>();
@@ -140,29 +170,49 @@ public class DatabaseService {
 				column.setComment(comment);
 				column.setLabel(comment);
 				column.setName(rs.getString("COLUMN_NAME"));
-				String dataType = rs.getString("TYPE_NAME");
-				column.setDataType(dataType);
 				column.setSize(rs.getInt("COLUMN_SIZE"));
 				column.setDecimalDigits(rs.getInt("DECIMAL_DIGITS"));
-				column.setJdbcType(JdbcUtils.getJdbcType(rs.getInt("DATA_TYPE"),dataType));
 				
-				String databaseName = metaData.getDatabaseProductName();
-				if(databaseName.toLowerCase().indexOf("oracle")==-1){
+				String typeName = rs.getString("TYPE_NAME");
+				column.setTypeName(typeName);
+				
+				Integer sqlType = rs.getInt("DATA_TYPE");
+				column.setDataType(sqlType);
+				
+				column.setProperty(NameConverter.columnToProperty(column
+						.getName()));
+				column.setUpperProperty(NameConverter.firstLetterUpper(column
+						.getProperty()));
+				
+				try{
 					String isAutoIncrement = rs.getString("IS_AUTOINCREMENT");
 					if ("YES".equals(isAutoIncrement)) {
 						column.setAutoIncrement(true);
 					} else {
 						column.setAutoIncrement(false);
 					}
+				}catch(Exception ex){
+					
 				}
-
-				column.setJavaType(JdbcUtils.getJavaType(rs.getInt("DATA_TYPE"),dataType));
-
-				column.setProperty(NameConverter.columnToProperty(column
-						.getName()));
-				column.setUpperProperty(NameConverter.firstLetterUpper(column
-						.getProperty()));
+				
+				if ("NUMBER".equals(typeName) && column.getDecimalDigits() == 0) {
+					sqlType = Types.NUMERIC;
+				} else if ("NUMBER".equals(typeName) && column.getDecimalDigits() > 0) {
+					sqlType = Types.FLOAT;
+				}
+				String javaType = SQL_TYPE_TO_JAVA.get(sqlType);
+				if (StringUtils.isNotBlank(javaType)) {
+					javaType = javaType.replace("java.lang.", "");
+				} else {
+					javaType = "未识别的java类型";
+				}
+				column.setJavaType(javaType);
+			 
+				column.setJdbcType(SQL_TYPE_TO_JDBC.get(column.getDataType()));
+				
+				
 				columnList.add(column);
+				System.out.println(column.toString());
 			}
 			table.setColumns(columnList);
 

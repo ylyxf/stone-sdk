@@ -35,7 +35,12 @@ public class Column {
 	/**
 	 * 列类型
 	 */
-	private String dataType;
+	private Integer dataType;
+	
+	/**
+	 * 列类型
+	 */
+	private String typeName;
 
 	/**
 	 * java类型
@@ -76,15 +81,6 @@ public class Column {
 
 	public void setLabel(String label) {
 		this.label = label;
-	}
-
-	
-	public String getDataType() {
-		return dataType;
-	}
-
-	public void setDataType(String dataType) {
-		this.dataType = dataType;
 	}
 
 	public String getComment() {
@@ -159,4 +155,31 @@ public class Column {
 		this.autoIncrement = autoIncrement;
 	}
 
+	public String getTypeName() {
+		return typeName;
+	}
+
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+
+	public void setDataType(Integer dataType) {
+		this.dataType = dataType;
+	}
+
+	public Integer getDataType() {
+		return dataType;
+	}
+
+	@Override
+	public String toString() {
+		return "Column [label=" + label + ", comment=" + comment + ", name="
+				+ name + ", property=" + property + ", upperProperty="
+				+ upperProperty + ", primaryKey=" + primaryKey + ", dataType="
+				+ dataType + ", typeName=" + typeName + ", javaType="
+				+ javaType + ", jdbcType=" + jdbcType + ", size=" + size
+				+ ", decimalDigits=" + decimalDigits + ", autoIncrement="
+				+ autoIncrement + "]";
+	}
+	
 }
