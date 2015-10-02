@@ -12,7 +12,7 @@
 
 <%
 	DictItemService dictItemService = (DictItemService)application.getAttribute("dictItemService");
-   	request.setAttribute ("dictItemList" , dictItemService.getDictItemList(code,filterStr)) ;  
+   	request.setAttribute("dictItemList" , dictItemService.getDictItemList(code,filterStr)) ;  
 %>
 <c:choose>
 	<%--下拉框 --%>
